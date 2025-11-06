@@ -1,0 +1,17 @@
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Configuration;
+
+@SpringBootApplication
+@Configuration
+@EntityScan(basePackages = {"com.example.demo.models"})
+public class ConvocatoriaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConvocatoriaApplication.class, args);
+	}
+
+}
