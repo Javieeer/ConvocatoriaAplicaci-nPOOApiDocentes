@@ -21,11 +21,23 @@ public class TeacherModel {
 	
 	@Column(nullable = false)
 	private int documentType;
+	
+	@Column(nullable = false)
 	private String teacherName;
+	
+	@Column(nullable = false)
 	private String teacherLastName;
+	
+	@Column(nullable = false)
 	private int gender;
+	
+	@Column(nullable = false)
 	private String phoneNumber;
+	
+	@Column(nullable = false)
 	private String email;
+	
+	@Column(nullable = false)
 	private String subject;
 	
 	public int getId() {
