@@ -22,25 +22,49 @@ public class TeacherService {
 	}
 	
 	//POST
-	public TeacherModel save(TeacherModel teacherModel) {
-		//Hacemos validación previa
-		//insert into () values()
-		return teacherRepository.save(teacherModel);
+	public ResponseModel save(TeacherModel teacherModel) {
+		
+		try {
+			Iterable<TeacherModel> teachers = teacherRepository.findAll();
+			for(TeacherModel t : teachers) {
+				if(t.getDocumentNumber().equals(teacherModel.getDocumentNumber())) {
+					return new ResponseModel(false, "El número de documento ya se encuentra registrado");
+				}
+			}
+			
+			teacherRepository.save(teacherModel);
+			return new ResponseModel(true, "Profesor registrado exitosamente");
+			
+		} catch(Exception ex){
+			return new ResponseModel(false, "Error al guardar: " + ex.getMessage());
+		}
 	}
 	
+	//PUT
 	public ResponseModel update(TeacherModel teacherModel) {
 		try {
 			if(!teacherExist(teacherModel.getId())) {
 				return new ResponseModel(false, "Docente no existe");
-			} else {
-				teacherRepository.save(teacherModel);
-				return new ResponseModel(true, "Docente actualizado con exito");
-			}
+			} 
+			
+			Iterable<TeacherModel> teachers = teacherRepository.findAll();
+
+	        for (TeacherModel t : teachers) {
+	        	if (t.getId() != teacherModel.getId() && t.getDocumentNumber().equals(teacherModel.getDocumentNumber())) {
+
+	                return new ResponseModel(false, "El número de documento ya está registrado por otro docente " );
+	            }
+	        }
+	        
+	        teacherRepository.save(teacherModel);
+	        return new ResponseModel(true, "Docente actualizado con éxito");
+	        
 		} catch(Exception ex) {
 			return new ResponseModel(false, ex.toString());
 		}
 	}
 	
+	//DELETE
 	public ResponseModel delete(int Id) {
 		try {
 			if(!teacherExist(Id)) {
