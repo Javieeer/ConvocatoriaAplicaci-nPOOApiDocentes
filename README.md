@@ -4,7 +4,6 @@ Este proyecto es una API REST desarrollada con Spring Boot para la gestión de d
 
 ## Integrantes del Equipo
 - Javier Alejandro Zapata Ramos
-- Jhonatan Mauricio Rojas Mosquera
 
 ## Tecnologías Utilizadas
 - Spring Boot 
@@ -36,9 +35,8 @@ Este proyecto es una API REST desarrollada con Spring Boot para la gestión de d
 ## Documentación de la API
 La API proporciona los siguientes endpoints para la gestión de docentes:
 - GET `/api/docentes` - Obtener todos los docentes
-- GET `/api/docentes/{id}` - Obtener un docente por ID
 - POST `/api/docentes` - Crear un nuevo docente
-- PUT `/api/docentes/{id}` - Actualizar un docente existente
+- PUT `/api/docentes` - Actualizar un docente existente
 - DELETE `/api/docentes/{id}` - Eliminar un docente
 
 ## Licencia
